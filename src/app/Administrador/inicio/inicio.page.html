@@ -1,0 +1,38 @@
+<ion-header [translucent]="true">
+    <ion-toolbar color="dark">
+        <ion-title>
+            Administrador
+        </ion-title>
+        <ion-buttons slot="primary">
+            <ion-button (click)='CerrarSesion()'>
+                <ion-icon slot="end" name="log-out-outline"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)='Modal("CrearProd")'>
+        <ion-fab-button>
+            <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+    <ion-item-sliding *ngFor="let item of productos">
+        <ion-item>
+            <ion-label style="white-space: inherit;">
+                <h2 style="text-align: center;text-transform: uppercase;">
+                    <strong>{{item.nombre}}</strong></h2>
+                <br><strong>Monto total:</strong> {{item.precio}}
+                <br> <strong>Descripcion:</strong> {{item.descripcion}}
+            </ion-label>
+        </ion-item>
+        <ion-item-options side="end">
+            <ion-item-option color="primary" (click)='Modal("EditarProd",item)'>
+                <ion-icon slot="icon-only" name="create"></ion-icon>
+            </ion-item-option>
+            <ion-item-option color="danger" (click)='EliminarProducto(item.id_producto)'>
+                <ion-icon slot="icon-only" name="trash"></ion-icon>
+            </ion-item-option>
+        </ion-item-options>
+    </ion-item-sliding>
+</ion-content>

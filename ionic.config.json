@@ -1,0 +1,7 @@
+{
+  "name": "store_exam",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

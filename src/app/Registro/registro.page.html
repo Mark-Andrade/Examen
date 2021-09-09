@@ -1,0 +1,51 @@
+<ion-header>
+    <ion-toolbar color="base">
+        <ion-buttons slot="start">
+            <ion-back-button routerLink="/"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Registro</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-grid>
+        <ion-row justify-content-center>
+            <ion-col>
+                <ion-card>
+                    <ion-card-header>
+                        <ion-card-subtitle>
+                            <img class="img" src="https://image.freepik.com/vector-gratis/ramadan-sale-online-shopping-icon-illustration-concepto-icono-tecnologia-empresarial-aislado-estilo-plano-dibujos-animados_138676-1247.jpg">
+                        </ion-card-subtitle>
+                    </ion-card-header>
+                    <ion-card-content>
+                        <Form [formGroup]="formregistro" (ngSubmit)="registrar()" autocomplete="off">
+                            <div padding>
+                                <ion-item>
+                                    <ion-icon name="person-outline"></ion-icon>
+                                    <ion-input type="text" placeholder="Nombre completo" maxlength="50" formControlName="nombrecom"></ion-input>
+                                </ion-item>
+                                <ion-label class="letra" color="error" *ngIf="isSubmitted && errorControl.nombrecom.errors?.required">El nombre es requerido</ion-label>
+                                <ion-label class="letra" color="error" *ngIf="isSubmitted && errorControl.nombrecom.errors?.minlength">Por favor, no escribas menos de 10 caracteres.</ion-label>
+                                <ion-item>
+                                    <ion-icon name="person-circle-outline"></ion-icon>
+                                    <ion-input type="text" placeholder="Correo" maxlength="40" formControlName="correo"></ion-input>
+                                </ion-item>
+                                <ion-label class="letra" color="error" *ngIf="isSubmitted && errorControl.correo.errors?.required">El correo es requerido</ion-label>
+                                <ion-label class="letra" color="error" *ngIf="isSubmitted && errorControl.correo.errors?.validateInput">El correo no es válido</ion-label>
+                                <ion-item>
+                                    <ion-icon name="lock-closed-outline"></ion-icon>
+                                    <ion-input type="password" placeholder="Contraseña" maxlength="15" formControlName="contrasena"></ion-input>
+                                </ion-item>
+                                <ion-label class="letra" color="error" *ngIf="isSubmitted && errorControl.contrasena.errors?.required">La contraseña es requerida</ion-label>
+                                <ion-label class="letra" color="error" *ngIf="isSubmitted && errorControl.contrasena.errors?.minlength">Por favor, no escribas menos de 4 caracteres.</ion-label>
+                            </div><br>
+                            <div padding>
+                                <ion-button expand="block" shape="round" type="submit" color="dark">Registrarse</ion-button>
+                            </div>
+                        </Form>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

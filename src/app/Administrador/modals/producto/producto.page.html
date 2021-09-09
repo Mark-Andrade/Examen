@@ -1,0 +1,48 @@
+<ion-header [translucent]="true">
+    <ion-toolbar color="dark">
+        <ion-buttons end>
+            <ion-button (click)="closeModal()">
+                <ion-icon name="arrow-back-outline"></ion-icon>
+            </ion-button>
+            <ion-title>Agregar Producto</ion-title>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <ion-grid>
+        <ion-row justify-content-center>
+            <ion-col>
+                <ion-card>
+                    <ion-card-content>
+                        <Form [formGroup]="formproducto" (ngSubmit)="registrarproducto()" autocomplete="off">
+                            <div padding>
+                                <ion-item>
+                                    <ion-icon name="cart-outline"></ion-icon>
+                                    <ion-input type="text" placeholder="Nombre" maxlength="30" formControlName="nombre"></ion-input>
+                                </ion-item>
+                                <ion-label class="letra1" color="error" *ngIf="isSubmitted && errorControl.nombre.errors?.required">El nombre es requerido</ion-label>
+                                <ion-label class="letra1" color="error" *ngIf="isSubmitted && errorControl.nombre.errors?.minlength">Por favor, no escribas menos de 4 caracteres.</ion-label>
+                                <ion-item>
+                                    <ion-icon name="clipboard-outline"></ion-icon>
+                                    <ion-input type="text " placeholder="Descripcion" maxlength="40" formControlName="descripcion"></ion-input>
+                                </ion-item>
+                                <ion-label class="letra1" color="error" *ngIf="isSubmitted && errorControl.descripcion.errors?.required">La descripcion es requerida</ion-label>
+                                <ion-label class="letra1" color="error" *ngIf="isSubmitted && errorControl.descripcion.errors?.minlength">Por favor, no escribas menos de 8 caracteres.</ion-label>
+                                <ion-item>
+                                    <ion-icon name="cash-outline"></ion-icon>
+                                    <ion-input type="number" placeholder="Precio" maxlength="15" formControlName="precio"></ion-input>
+                                </ion-item>
+                                <ion-label class="letra1" color="error" *ngIf="isSubmitted && errorControl.precio.errors?.required">El precio es requerido</ion-label>
+                                <ion-label class="letra1" color="error" *ngIf="isSubmitted && errorControl.precio.errors?.minlength">Por favor, no escribas menos de 1 caracteres.</ion-label>
+                            </div><br>
+                            <div padding>
+                                <ion-button expand="block" shape="round" type="submit" color="dark">Agregar</ion-button>
+                            </div>
+                        </Form>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
